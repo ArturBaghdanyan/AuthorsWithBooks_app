@@ -1,0 +1,42 @@
+section {
+  width: 100%;
+  margin: 15px auto;
+  padding: 0 20px;
+}
+
+.authorCard {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 4px 4px 4px 6px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #007bff;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #222;
+  }
+  .authorName {
+    color: #777;
+    font-style: italic;
+  }
+  a {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    width: 110px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}

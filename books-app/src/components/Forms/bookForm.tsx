@@ -40,7 +40,7 @@ export const BookForm = ({ onSubmit, initialData }: BookFormProps) => {
           onChange={(e) => setLocalData({ ...localData, description: e.target.value })}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Pages"
           value={localData.countPages}
           onChange={(e) => setLocalData({ ...localData, countPages: Number(e.target.value) })}

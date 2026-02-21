@@ -11,6 +11,7 @@ interface AuthorContextType {
   setCurrentAuthor: React.Dispatch<React.SetStateAction<Author | null>>;
   fetchAuthorById: (id: number) => Promise<void>;
   createAuthor: (author: Omit<Author, "id">) => Promise<void>;
+  removeAuthor: (authorId: number) => Promise<void>;
   createBook: (
     authorId: number,
     bookData: Omit<Book, "id" | "authorId">,
@@ -37,6 +38,21 @@ export const AuthorsProvider = ({
     } catch (err) {
       console.error("Failed to create author:", err);
       throw err;
+    }
+  };
+
+  const removeAuthor = async (authorId: number) => {
+    try {
+      await authorApi().deleteAuthor(authorId);
+
+      setAuthors((prev) => prev.filter((author) => author.id !== authorId));
+      if (currentAuthor?.id === authorId) {
+        setCurrentAuthor(null);
+      }
+
+      console.log(`Author with ID ${authorId} deleted successfully`);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -87,7 +103,7 @@ export const AuthorsProvider = ({
     }
   };
 
- const fetchAuthorById = useCallback(async (id: number | string) => {
+  const fetchAuthorById = useCallback(async (id: number | string) => {
     setLoading(true);
     try {
       const data = await authorApi().getAuthorById(id as number);
@@ -132,6 +148,7 @@ export const AuthorsProvider = ({
         authors,
         setAuthors,
         currentAuthor,
+        removeAuthor,
         setCurrentAuthor,
         loading,
         setLoading,

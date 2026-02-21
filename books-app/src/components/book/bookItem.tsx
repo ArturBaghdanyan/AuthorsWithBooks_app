@@ -28,7 +28,7 @@ const BookItem: React.FC<BookItemProps> = ({ book, onUpdate, onDelete }) => {
 
   return (
     <div className={style.bookItem}>
-      <h2 className={style.author}>{bookName}</h2>
+      <h2 className={style.bookItem_author}>{bookName}</h2>
       <p>
         <strong>Release Year:</strong> {year}
       </p>

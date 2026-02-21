@@ -17,6 +17,7 @@ const HomePage = () => {
     loading,
     setLoading,
     createAuthor,
+    removeAuthor,
     createBook,
     updateAuthorBooks,
     removeAuthorBooks,
@@ -24,7 +25,7 @@ const HomePage = () => {
 
   const [activeAuthorId, setActiveAuthorId] = useState<number | null>(null);
   const [showModal, setShowModal] = useState(false);
-
+  const [deletingAuthorId, setDeletingAuthorId] = useState<number | null>(null);
   useEffect(() => {
     authorApi()
       .getAuthors()
@@ -37,7 +38,6 @@ const HomePage = () => {
     if (activeAuthorId === null) return;
 
     try {
-
       await createBook(activeAuthorId, bookFields);
 
       setActiveAuthorId(null);
@@ -47,7 +47,6 @@ const HomePage = () => {
   };
 
   if (loading) return <div className={style.loading}>Loading...</div>;
-
 
   return (
     <div className={style.homePage}>
@@ -92,9 +91,34 @@ const HomePage = () => {
             <div className={style.author_title}>
               <h2>{author.name}</h2>
 
-              <button onClick={() => setActiveAuthorId(author.id)}>
-                Create Book
-              </button>
+              <div className={style.author_title_buttons}>
+                <button onClick={() => setActiveAuthorId(author.id)}>
+                  Create Book
+                </button>
+
+                <button onClick={() => setDeletingAuthorId(author.id)}>
+                  Delete Author
+                </button>
+              </div>
+
+              {deletingAuthorId !== null && (
+                <Modal
+                  onClose={() => setDeletingAuthorId(null)}
+                  onConfirm={async () => {
+                    await removeAuthor(deletingAuthorId);
+                    setDeletingAuthorId(null);
+                  }}
+                  text1="Delete"
+                  text2="Cancel"
+                >
+                  <div style={{ padding: "20px" }}>
+                    <p>
+                      Are you sure you want to remove this author and all their
+                      books?
+                    </p>
+                  </div>
+                </Modal>
+              )}
             </div>
 
             {author.books?.length > 0 ? (

@@ -11,7 +11,7 @@ const AuthorUser: React.FC<AuthorUserProps> = ({ author }) => {
   return (
     <section>
       <div className={style.authorCard}>
-        <p className={style.authorName}>
+        <p className={style.authorCard_name}>
           Author user: <strong>{author.name}</strong>
         </p>
         <p>{author.age} years old</p>

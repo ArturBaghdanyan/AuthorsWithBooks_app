@@ -1,6 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthors } from "../../hooks/useAuthors";
 
+import style from "./style.module.scss";
+
 const AuthorBooks = () => {
   const { authors, loading } = useAuthors();
   const { id } = useParams();
@@ -22,29 +24,31 @@ const AuthorBooks = () => {
   }
 
   return (
-    <div className="author-books-container">
+    <section>
       <h2>Books by {author.name}</h2>
-      <p>Age: {author.age}</p>
-
       <hr />
 
       {author.books && author.books.length > 0 ? (
-        <div className="books-grid">
+        <>
           {author.books.map((book) => (
-            <div key={book.id} className="book-card">
-              <h3>{book.bookName}</h3>
+            <div key={book.id} className={style.bookItem}>
+              <h2 className={style.bookItem_author}>{book.bookName}</h2>
               <p>
-                <strong>Year:</strong> {book.year}
+                <strong>Release Year:</strong> {book.year}
               </p>
-              <p>{book.description}</p>
-              <span>{book.countPages} pages</span>
+              <p>
+                <strong>Description:</strong> {book.description}
+              </p>
+              <p>
+                <strong>Pages:</strong> {book.countPages}
+              </p>
             </div>
           ))}
-        </div>
+        </>
       ) : (
         <p>This author has no books listed yet.</p>
       )}
-    </div>
+    </section>
   );
 };
 

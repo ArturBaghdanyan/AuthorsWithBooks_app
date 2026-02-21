@@ -50,8 +50,7 @@ const HomePage = () => {
 
   return (
     <div className={style.homePage}>
-      <div className={style.header}>
-        <h2>All Books</h2>
+      <div className={style.homePage_button}>
         <button onClick={() => setShowModal(true)}>Add New Author</button>
       </div>
 
@@ -86,6 +85,8 @@ const HomePage = () => {
       )}
 
       <div className={style.authorsContainer}>
+        <h2>All Books</h2>
+
         {authors.map((author) => (
           <div key={author.id} className={style.author}>
             <div className={style.author_title}>

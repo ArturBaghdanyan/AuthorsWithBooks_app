@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { useAuthors } from "../../hooks/useAuthors";
 import { authorApi } from "../../api/library";
 import BookItem from "../../components/book/bookItem";
-
 import Modal from "../../components/modal/Modal";
 import { AuthorForm } from "../../components/Forms/authorForm";
-
-import style from "./home.module.scss";
 import { BookForm } from "../../components/Forms/bookForm";
 import type { Book } from "../../types/booksType";
+
+import style from "./home.module.scss";
 
 const HomePage = () => {
   const {

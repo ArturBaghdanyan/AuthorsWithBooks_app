@@ -48,21 +48,6 @@ export const createAuthor = async (req, res) => {
       { transaction: t },
     );
 
-    if (book && Array.isArray(book)) {
-      for (let b of book) {
-        await Book.create(
-          {
-            bookName: b.bookName,
-            year: Number(b.year),
-            description: b.description,
-            countPages: b.countPages,
-            author_id: newAuthor.id,
-          },
-          { transaction: t },
-        );
-      }
-    }
-
     await t.commit();
 
     const authorWithBooks = {

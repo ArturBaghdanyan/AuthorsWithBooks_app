@@ -27,3 +27,13 @@ export const createBook = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const deleteBook = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const remove = await author.findByPk(id);
+    await remove.destroy();
+  } catch (error) {
+    res.status(401).json({ error: error.message });
+  }
+};

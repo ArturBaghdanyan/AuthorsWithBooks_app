@@ -5,6 +5,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import "./models/index.js";
 
+import authRoutes from "./routes/authRoutes.js";
 import authorRoutes from "./routes/AuthorRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => res.send("Books API is running 📚"));
 
 app.use("/authors", authorRoutes);
 app.use("/books", bookRoutes);
+app.use('/user', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

@@ -1,0 +1,10 @@
+frontend:
+  build: books-app
+  container_name: books-frontend
+  ports:
+    - "3000:3000"
+  volumes:
+    - ./books-app:/app
+    - /app/node_modules
+  depends_on:
+    - api

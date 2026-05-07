@@ -1,73 +1,82 @@
-# React + TypeScript + Vite
+# 📚 AuthorsWithBooks — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript application for managing authors and their books. Connects to a custom Express.js REST API with a PostgreSQL database.
 
-Currently, two official plugins are available:
+🔗 **Backend Repo:** [AuthorsWithBooks API](https://github.com/ArturBaghdanyan/AuthorsWithBooks_app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 📋 View list of authors and their books
+- ➕ Add new authors and books
+- ✏️ Edit existing entries
+- 🗑️ Delete authors and books
+- 🔗 Connected to a real PostgreSQL database via REST API
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠 Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Technology | Purpose                 |
+| ---------- | ----------------------- |
+| React 18   | UI library              |
+| TypeScript | Type safety             |
+| Vite       | Build tool & dev server |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/ArturBaghdanyan/AuthorsWithBooks_app.git
+
+# Navigate to the frontend folder
+cd AuthorsWithBooks_app/client  # adjust folder name if different
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open [http://localhost:5173](http://localhost:5173) in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+> ⚠️ Make sure the backend server is running before starting the frontend.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the frontend root:
+
+```env
+VITE_API_URL=http://localhost:3000
 ```
+
+---
+
+## 📁 Project Structure
+
+```
+client/
+├── src/
+│   ├── components/      # Reusable UI components
+│   ├── pages/           # Page-level components
+│   ├── services/        # API call functions
+│   ├── types/           # TypeScript interfaces
+│   └── App.tsx
+├── index.html
+└── vite.config.ts
+```
+
+---
+
+## 👤 Author
+
+**Artur Baghdanyan**
+
+- GitHub: [@ArturBaghdanyan](https://github.com/ArturBaghdanyan)
+- LinkedIn: (https://www.linkedin.com/in/artur-baghdanyan)
